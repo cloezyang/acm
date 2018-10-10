@@ -2,23 +2,19 @@
 #include<string.h>
 #include<stdlib.h>
 #include<math.h>
-
 struct stu
 {
-	char name[20];
+	char name[25],nam[25];
 };
+
 int main(void)
 {
+    struct stu st[1000];
 	int fs[1000],i, j, m,max,n;
-	struct stu stu[1000];
-	char a;
-	
-	printf("有几个人！\n");
-	scanf("%d %d", &m, &n);
-	printf("输入名字和分数\n");	
+	scanf("%d%d", &m, &n);	
 	for (i=0;i<m;i++)
 	{
-		scanf("%s %d", stu[i].name ,&fs[i]);
+		scanf("%s%d", st[i].name ,&fs[i]);
 	}	
 	for (i=0;i<m-1;i++)
 	{	
@@ -30,16 +26,15 @@ int main(void)
 				max = fs[j];
 				fs[j]=fs[i];
 				fs[i]=max;
-				a=*stu[i].name;
-				*stu[i].name=*stu[j].name;
-				*stu[j].name=a;
+				*st[j].nam=*st[i].name;
+				*st[i].name=*st[j].name;
+				*st[j].name=*st[j].nam;
 			}
 		}
 	}
-	printf("\n");
 	for (i=0;i<m;i++)
 	{
-		printf("%s %d\n", stu[i].name ,fs[i]);
+		printf("%s %d\n", st[i].name ,fs[i]);
 	}
 	return 0;
 }
